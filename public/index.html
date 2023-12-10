@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="js/home.js">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HODLINFO</title>
+</head>
+
+<body>
+    <div class="container">
+
+
+        <!-- Custom Navbar -->
+        <div id="navbar" class="navbar">
+
+            <img src="images/HODLINFO.8f78fc06.png" alt="Logo" class="logo">
+
+
+
+            <!-- Dropdown -->
+            <div class="nav">
+
+                <div class="dropdown">
+                    <button>INR <span class="triangle-up"></span></button>
+                </div>
+                <div class="dropdown">
+                    <button id="cryptoButton">ETH <span class="triangle-up"></span></button>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="changeCrypto('ETH')">ETH</a>
+                        <a href="#" onclick="changeCrypto('BTC')">BTC</a>
+                        <a href="#" onclick="changeCrypto('USTD')">USTD</a>
+                        <a href="#" onclick="changeCrypto('XRP')">XRP</a>
+                        <a href="#" onclick="changeCrypto('TRX')">TRX</a>
+                        <a href="#" onclick="changeCrypto('DASH')">DASH</a>
+                        <a href="#" onclick="changeCrypto('ZEC')">ZEC</a>
+                        <a href="#" onclick="changeCrypto('XEM')">XEM</a>
+                        <a href="#" onclick="changeCrypto('IOST')">IOST</a>
+                        <a href="#" onclick="changeCrypto('WIN')">WIN</a>
+                        <a href="#" onclick="changeCrypto('BTT')">BTT</a>
+                        <a href="#" onclick="changeCrypto('WRX')">WRX</a>
+                    </div>
+                </div>
+                <div class="dropdownn">
+                    <button id="actionButton">BUY ETH</button>
+                </div>
+            </div>
+
+
+
+            <!-- timer -->
+
+
+            <div id="timer" class="timer-buttons">
+                <div class="clock">
+                    <div class="clock-wrap pro-0">
+                        <span class="count">0</span>
+                    </div>
+                </div>
+                <button class="telegram-button">
+                    <img src="images/telegram.png" alt=""> Connect Telegram
+                </button>
+                <label class="switch">
+                    <input class="toggleButton" type="checkbox" onchange="toggleDarkMode()">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- Data Section -->
+        <div id="data-section" class="data-section">
+            <div class="data-column">
+                <div class="data-row-1">0.88%</div>
+                <div class="data-row-2">5 Mins</div>
+            </div>
+            <div class="data-column">
+                <div class="data-row-1">1.88%</div>
+                <div class="data-row-2">1 Hour</div>
+            </div>
+            <div class="data-column">
+                <div class="data-row-2">Best Price to Trade</div>
+                <div id="data-section" class="data-row">₹ 38,51,176</div>
+                <div class="data-row-22">Average BTC/INR net price including commission</div>
+            </div>
+            <div class="data-column">
+                <div class="data-row-1">0.88%</div>
+                <div class="data-row-2">1 Day</div>
+            </div>
+            <div class="data-column">
+                <div class="data-row-1">0.88%</div>
+                <div class="data-row-2">7 Days</div>
+            </div>
+
+        </div>
+
+
+
+        <!-- Table Section -->
+        <div class="api-table" id="apiTable">
+            <div class="table-header">
+                <div class="header-column">#</div>
+                <div class="header-column">Platform</div>
+                <div class="header-column">Last Traded Price</div>
+                <div class="header-column">Buy/Sell Price</div>
+                <div class="header-column">Difference</div>
+                <div class="header-column">Savings</div>
+            </div>
+
+            <!-- Hardcoded data -->
+            <!-- <div class="api-row" id="table">
+                <div class="row-column">1</div>
+                <div class="row-column"><img src="images/telegram.png" style="width: 30px; margin-right: 10px;" alt="">WazirX</div>
+                <div class="row-column">₹ 37,55,819</div>
+                <div class="row-column">₹ 37,50,047 / ₹ 37,55,819</div>
+                <div class="row-column">-2.48 %</div>
+                <div class="row-column">▼ ₹ 95,357</div>
+            </div> -->
+        </div>
+
+
+
+
+
+
+
+        <!-- Footer -->
+        <div class="footer" id="footer">
+            <div class="copyright">
+                Copyright © 2019 HodlInfo.com
+            </div>
+            <div class="support">
+                Support
+            </div>
+        </div>
+
+        <!-- Additional fixed div after the footer -->
+        <div class="sticky">
+            <button>Add hodlinfo to home screen</button>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script src="./script.js"></script>
+
+
+    <script>
+
+        let darkMode = false;
+
+        const slider = document.getElementsByClassName("toggleButton");
+        function toggleDarkMode() {
+            const body = document.body;
+            const rows = document.getElementsByClassName('api-row');
+            body.classList.toggle("dark-mode");
+            console.log(rows);
+            (slider[0].checked === false) ? changeColorLight(rows) : changeColorDark(rows);
+        }
+
+        //changecolor of api-row
+        function changeColorDark(rows) {
+            for (const element of rows) {
+                element.style.backgroundColor = '#2e3241'; // Change color to grey
+            }
+        }
+        function changeColorLight(rows) {
+            for (const element of rows) {
+                element.style.backgroundColor = '#ffffff'; // Change color to white
+            }
+        }
+
+
+        function changeCrypto(crypto) {
+            document.getElementById('cryptoButton').innerText = crypto;
+            document.getElementById('actionButton').innerText = 'BUY ' + crypto;
+        }
+
+        async function fetchdata() {
+            try {
+
+                const res = await fetch("https://hodlinfo-stocks-api.onrender.com/api/data")
+                const data = await res.json();
+
+                populateTable(data);
+
+                console.log(data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        function createTableRow(index, platform, lastPrice, buySellPrice, difference, savings) {
+            const row = document.createElement('div');
+            row.classList.add('api-row');
+            row.id = 'api-row'
+
+            const columns = [
+                createColumn(index),
+                createColumn(platform),
+                createColumn(lastPrice),
+                createColumn(buySellPrice),
+                createColumn(difference),
+                createColumn(savings)
+            ];
+
+            columns.forEach(column => row.appendChild(column));
+            document.querySelector('.api-table').appendChild(row);
+        }
+
+
+        // helper funtion to create column
+        function createColumn(data) {
+            const column = document.createElement('div');
+            column.classList.add('row-column');
+            column.textContent = data;
+            return column;
+        }
+        // populate table
+        function populateTable(cryptoData) {
+            cryptoData.forEach((crypto, index) => {
+                createTableRow(
+                    index + 1,
+                    crypto.stock_name,
+                    `₹ ${crypto.last}`,
+                    `₹ ${crypto.buy} / ₹ ${crypto.sell}`,
+                    `${parseFloat((crypto.sell) - (crypto.buy)).toFixed(2)} %`,
+                    `▼ ₹ ${parseFloat(crypto.volume).toFixed(2)}`
+                );
+            });
+        }
+
+        fetchdata();
+
+
+    </script>
+</body>
+
+</html>
+
+<!-- 
+base_unit
+: 
+"btc"
+buy
+: 
+"3784998.0"
+last
+: 
+"3784999.0"
+name
+: 
+"BTC/INR"
+sell
+: 
+"3784999.0"
+stock_name
+: 
+"btcinr"
+volume
+: 
+"4.93055"
+__v
+: 
+0
+_id
+: 
+"6573f38492dd8a7bf5e04d3e" -->
